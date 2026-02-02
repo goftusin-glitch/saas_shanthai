@@ -1,5 +1,5 @@
 import { Book, Code, Rocket, Database, Shield, Cloud, Search } from 'lucide-react';
-import { Box, Typography, Paper, TextField, InputAdornment, Grid, Button } from '@mui/material';
+import { Box, Typography, Paper, TextField, InputAdornment, Button } from '@mui/material';
 
 export const Docs = () => {
     const sections = [
@@ -128,9 +128,13 @@ export const Docs = () => {
                                 </Typography>
                             </Box>
 
-                            <Grid container spacing={2}>
+                            <Box sx={{
+                                display: 'grid',
+                                gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                                gap: 2
+                            }}>
                                 {section.articles.map((article, articleIndex) => (
-                                    <Grid item xs={12} md={6} key={articleIndex}>
+                                    <Box key={articleIndex}>
                                         <Button
                                             fullWidth
                                             variant="outlined"
@@ -151,9 +155,9 @@ export const Docs = () => {
                                         >
                                             {article}
                                         </Button>
-                                    </Grid>
+                                    </Box>
                                 ))}
-                            </Grid>
+                            </Box>
                         </Paper>
                     );
                 })}
