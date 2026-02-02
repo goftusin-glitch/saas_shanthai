@@ -1,0 +1,23 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.13.3",
+    "aiosmtplib>=5.1.0",
+    "bcrypt==4.0.1",
+    "cryptography==41.0.7",
+    "fastapi==0.109.0",
+    "google-auth>=2.48.0",
+    "google-auth-oauthlib>=1.2.4",
+    "passlib[bcrypt]==1.7.4",
+    "pydantic-settings==2.1.0",
+    "pydantic[email]>=2.12.5",
+    "pymysql==1.1.0",
+    "python-jose[cryptography]==3.3.0",
+    "python-multipart==0.0.6",
+    "sqlalchemy==2.0.25",
+    "uvicorn==0.27.0",
+]

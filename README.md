@@ -1,162 +1,255 @@
-# MicroSaaS Template
+# MicroSaaS Platform
 
-> **Clone. Define. Build.** Full-stack SaaS in minutes.
+A comprehensive full-stack platform that guides users to build their own MicroSaaS applications using AI-powered templates. Built with React + Vite + TypeScript on the frontend and FastAPI + MySQL on the backend.
 
----
+## Features
 
-## Quick Start
-
-```bash
-# 1. Clone
-git clone https://github.com/manojkanur/MicroSaaS-Template-Private.git my-saas
-cd my-saas
-
-# 2. Define your product
-# Edit INITIAL.md with your product details
-
-# 3. Generate blueprint
-/generate-prp INITIAL.md
-
-# 4. Build with parallel agents
-/execute-prp PRPs/[name]-prp.md
-```
-
----
-
-## What You Get
-
-- FastAPI backend with JWT + Google OAuth
-- React frontend with modern UI (Framer Motion)
-- PostgreSQL database with migrations
-- Docker + CI/CD ready
-- 80%+ test coverage
-
----
-
-## How It Works
-
-```
-INITIAL.md → /generate-prp → PRP blueprint → /execute-prp → Full App
-
-Phase 1 (Parallel):
-├─ DATABASE-AGENT  → Models + migrations
-├─ BACKEND-AGENT   → API structure
-├─ FRONTEND-AGENT  → React setup
-└─ DEVOPS-AGENT    → Docker + CI
-
-Phase 2 (Per Module):
-├─ Backend endpoints
-└─ Frontend pages
-
-Phase 3 (Parallel):
-├─ TEST-AGENT      → 80%+ coverage
-└─ REVIEW-AGENT    → Security audit
-```
-
----
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| `INITIAL.md` | Define your product |
-| `CLAUDE.md` | Project rules |
-| `skills/*.md` | Code patterns (5 files) |
-| `agents/*.md` | Agent definitions |
-| `.claude/commands/` | Custom commands |
-
----
-
-## Skills (5 files)
-
-| Skill | Contains |
-|-------|----------|
-| `BACKEND.md` | FastAPI + JWT + OAuth + Errors |
-| `FRONTEND.md` | React + UI Kit + API integration |
-| `DATABASE.md` | SQLAlchemy + Alembic |
-| `TESTING.md` | pytest + Vitest |
-| `DEPLOYMENT.md` | Docker + GitHub Actions |
-
----
-
-## Commands
-
-| Command | Description |
-|---------|-------------|
-| `/setup-project` | Interactive wizard |
-| `/generate-prp` | Create implementation blueprint |
-| `/execute-prp` | Build with parallel agents |
-
----
+- 🔐 **Authentication System** - Secure email/password authentication with JWT tokens
+- 📊 **Dashboard** - Overview with statistics and quick actions
+- 📝 **Templates** - Browse and use pre-built MicroSaaS templates
+- 📚 **Documentation** - Comprehensive guides for building your SaaS
+- 🛒 **Marketplace** - Premium integrations and features
+- 💳 **Subscription Management** - Multiple pricing tiers
+- ⚙️ **Settings** - User profile and preferences management
 
 ## Tech Stack
 
-- **Backend:** FastAPI + Python 3.11+
-- **Frontend:** React + TypeScript + Vite
-- **Database:** PostgreSQL + SQLAlchemy
-- **Auth:** JWT + Google OAuth
-- **UI:** Chakra UI or Tailwind + Framer Motion
-- **Deploy:** Docker + GitHub Actions
+### Frontend
+- **React 18** - UI library
+- **Vite** - Build tool and dev server
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **React Router** - Navigation
+- **Zustand** - State management
+- **React Hook Form** - Form handling
+- **Axios** - HTTP client
 
----
+### Backend
+- **FastAPI** - Python web framework
+- **SQLAlchemy** - ORM
+- **MySQL** - Database
+- **JWT** - Authentication
+- **Bcrypt** - Password hashing
 
-## Example
+## Color Theme
 
-```bash
-# Define an invoice SaaS in INITIAL.md:
-# - Module: Invoices (CRUD)
-# - Module: Clients (CRUD)
-# - Module: Dashboard
+- Primary: `#f7a252` (Orange)
+- Secondary: `#120d08` (Dark Brown/Black)
+- No gradients used throughout the design
 
-/generate-prp INITIAL.md
-# Creates PRPs/invoice-saas-prp.md
+## Prerequisites
 
-/execute-prp PRPs/invoice-saas-prp.md
-# 4 agents build in parallel
-# ~20-30 minutes for complete app
-```
+- **Node.js** 18+ and npm
+- **Python** 3.9+
+- **MySQL** 8.0+
 
----
+## Installation
 
-## Output Structure
-
-```
-my-saas/
-├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── models/
-│   │   ├── routers/
-│   │   ├── services/
-│   │   └── auth/
-│   ├── alembic/
-│   └── tests/
-├── frontend/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── hooks/
-│       └── services/
-├── docker-compose.yml
-└── .github/workflows/
-```
-
----
-
-## Run Locally
+### 1. Clone the Repository
 
 ```bash
-# Backend
-cd backend
-pip install -r requirements.txt
-alembic upgrade head
-uvicorn app.main:app --reload
+cd makeprod_ai
+```
 
-# Frontend
+### 2. Frontend Setup
+
+```bash
 cd frontend
 npm install
-npm run dev
-
-# Docker
-docker-compose up -d
+cp .env.example .env
 ```
+
+Edit `frontend/.env` if needed (default API URL is `http://localhost:8000`).
+
+### 3. Backend Setup
+
+```bash
+cd backend
+python -m venv venv
+
+# On Windows
+venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
+cp .env.example .env
+```
+
+### 4. Database Setup
+
+Create a MySQL database:
+
+```sql
+CREATE DATABASE microsaas CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+Update `backend/.env` with your MySQL credentials:
+
+```env
+DATABASE_URL=mysql+pymysql://YOUR_USER:YOUR_PASSWORD@localhost:3306/microsaas
+SECRET_KEY=your-very-long-random-secret-key-here
+```
+
+The database tables will be created automatically when you start the backend server.
+
+## Running the Application
+
+### Start the Backend
+
+```bash
+cd backend
+# Activate virtual environment if not already activated
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # macOS/Linux
+
+uvicorn main:app --reload
+```
+
+Backend will run on `http://localhost:8000`
+
+### Start the Frontend
+
+Open a new terminal:
+
+```bash
+cd frontend
+npm run dev
+```
+
+Frontend will run on `http://localhost:5173`
+
+## Usage
+
+1. Open `http://localhost:5173` in your browser
+2. Sign up with your email and password
+3. You'll be redirected to the dashboard
+4. Explore the different pages using the sidebar navigation:
+   - **Dashboard** - View your overview and stats
+   - **Templates** - Browse MicroSaaS templates
+   - **Docs** - Read documentation
+   - **Marketplace** - Explore integrations
+   - **Subscription** - Manage your plan
+   - **Settings** - Update your profile
+
+## Project Structure
+
+```
+makeprod_ai/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Layout/
+│   │   │   │   └── DashboardLayout.tsx
+│   │   │   └── ProtectedRoute.tsx
+│   │   ├── pages/
+│   │   │   ├── Auth/
+│   │   │   │   └── LoginSignup.tsx
+│   │   │   ├── Dashboard/
+│   │   │   ├── Templates/
+│   │   │   ├── Docs/
+│   │   │   ├── Marketplace/
+│   │   │   ├── Subscription/
+│   │   │   └── Settings/
+│   │   ├── services/
+│   │   │   └── api.ts
+│   │   ├── store/
+│   │   │   └── authStore.ts
+│   │   ├── types/
+│   │   │   └── auth.ts
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── tailwind.config.js
+│
+└── backend/
+    ├── models/
+    │   └── user.py
+    ├── routes/
+    │   └── auth.py
+    ├── schemas/
+    │   └── user.py
+    ├── utils/
+    │   └── auth.py
+    ├── main.py
+    ├── config.py
+    ├── database.py
+    └── requirements.txt
+```
+
+## API Endpoints
+
+### Authentication
+
+- `POST /api/auth/signup` - Create new user account
+- `POST /api/auth/login` - Login with email/password
+- `GET /api/auth/me` - Get current user (protected)
+
+### Health
+
+- `GET /` - API information
+- `GET /health` - Health check
+
+## Development
+
+### Frontend Development
+
+```bash
+cd frontend
+npm run dev  # Start dev server
+npm run build  # Build for production
+npm run preview  # Preview production build
+```
+
+### Backend Development
+
+The FastAPI server runs with auto-reload enabled for development.
+
+Access the interactive API documentation at:
+- Swagger UI: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc`
+
+## Environment Variables
+
+### Frontend (.env)
+
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+### Backend (.env)
+
+```env
+DATABASE_URL=mysql+pymysql://user:password@localhost:3306/microsaas
+SECRET_KEY=your-secret-key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=10080
+CORS_ORIGINS=["http://localhost:5173"]
+```
+
+## Security Notes
+
+⚠️ **Important for Production:**
+
+1. Change the `SECRET_KEY` in backend `.env` to a strong, random value
+2. Use environment-specific configuration
+3. Enable HTTPS
+4. Configure proper CORS origins
+5. Use strong database passwords
+6. Implement rate limiting
+7. Add input validation and sanitization
+
+## License
+
+MIT License - feel free to use this template for your own projects!
+
+## Support
+
+For issues or questions, please open an issue in the repository.
+
+---
+
+Built with ❤️ using React, FastAPI, and modern web technologies.
