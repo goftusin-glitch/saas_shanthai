@@ -1,5 +1,5 @@
 import { Search, Star } from 'lucide-react';
-import { Box, Typography, Paper, Button, TextField, InputAdornment, Select, MenuItem, FormControl, Checkbox, FormControlLabel, CircularProgress } from '@mui/material';
+import { Box, Typography, Paper, Button, TextField, InputAdornment, Select, MenuItem, FormControl, Checkbox, FormControlLabel } from '@mui/material';
 import { useState, useMemo, useEffect } from 'react';
 import { productService, Product } from '../../services/productService';
 
@@ -10,8 +10,8 @@ export const Marketplace = () => {
 
     // API state
     const [products, setProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [_loading, setLoading] = useState(true);
+    const [_error, setError] = useState<string | null>(null);
 
     const categories = [
         'Operations',

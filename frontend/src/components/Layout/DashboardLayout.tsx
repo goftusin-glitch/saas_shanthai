@@ -28,7 +28,7 @@ import { dashboardTheme } from '../../theme/theme';
 interface NavItem {
     path: string;
     label: string;
-    icon: React.ComponentType<{ size?: number }>;
+    icon: React.ElementType;
     children?: NavItem[];
 }
 
